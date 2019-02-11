@@ -1,0 +1,74 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dashie Tracker</title>
+    <style>
+       html {
+      box-sizing: border-box;
+    }
+    
+    body {
+      margin: 0;
+    }
+    
+    *, *:before, *:after {
+      box-sizing: inherit;
+    }
+    #container{
+        display: flex;
+        border: 1px solid blue;
+        justify-content: stretch;
+        height: 100%;
+    }
+    #container > *{
+        border: 1px solid green;
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    </style>
+</head>
+<body>
+    <div id="container">
+        
+        <div id="exercise">
+                <div id="exdisplay"></div>
+        </div>
+        <div id="coding">           
+             <div id="codedisplay"></div>
+        </div>
+        
+    </div>
+    <script>
+    const firstDayExercise = new Date(2017, 11, 20);
+    const firstDayCode = new Date(2019, 0, 1);
+    let today = new Date();
+
+    let daysBetween = function( date1, date2 ) {
+        //Get 1 day in milliseconds
+        var one_day=1000*60*60*24;
+
+        // Convert both dates to milliseconds
+        var date1_ms = date1.getTime();
+        var date2_ms = date2.getTime();
+
+        // Calculate the difference in milliseconds
+        var difference_ms = date2_ms - date1_ms;
+            
+        // Convert back to days and return
+        return Math.round(difference_ms/one_day); 
+    }
+
+    let exerciseDays = daysBetween(firstDayExercise, today);
+    let codeDays = daysBetween(firstDayCode, today)
+
+   document.querySelector("#exdisplay").innerHTML = exerciseDays + " consecutive days of exercise";
+   document.querySelector("#codedisplay").innerHTML = codeDays + " consecutive days of coding";
+
+    </script>
+</body>
+</html>
